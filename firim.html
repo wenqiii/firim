@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>plane</title>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html,body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #FFD200;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      align-items: center;
+    }
+    .container {
+      width: 70%;
+      height: 70%;
+      margin: 50px auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .plane {
+      width: 50%;
+      height: 60%;
+      position: relative;
+    }
+    .act {
+      -ms-animation: move linear 7s infinite;
+      -webkit-animation: move linear 7s infinite;
+      animation: move linear 7s infinite;
+    }
+    @keyframes move {
+        0% {
+            transform: translateY(0);
+        }
+        25% {
+           transform: translateY(50px);
+        }
+        50% {
+           transform: translateY(0);
+        }
+        75% {
+           transform: translateY(-50px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    .pl {
+      width: 480px;
+      height: 239px;
+    }
+    .propeller {
+      left: 13%;
+      bottom: 40%;
+      position: absolute;
+    }
+    .pro  {
+      width: 132px;
+      height: 33px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="plane act">
+        <img class="pl" src="https://fir.im/images/plane.svg" >
+        <div class="propeller">
+          <img class="pro" src="https://fir.im/images/propeller.svg">
+        </div>
+      </div>
+    </div>
+    <script>
+      function rotatePro() {
+        const pro = document.querySelector('.pro');
+        const now = new Date();
+        const second = now.getMilliseconds();
+        const rotateDegrees = second*60;
+        pro.style.transform = 'rotate('+rotateDegrees+'deg)';
+      }
+      setInterval(rotatePro,10);
+      rotatePro();
+    </script>
+  </body>
+</html>
